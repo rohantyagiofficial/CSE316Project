@@ -65,3 +65,22 @@ int handleQueries(){
       	rt[i]-=timeQuant; 
       	time+=timeQuant; 
     	} 
+if(rt[i]==0 && flag==1) 
+    	{ 
+      	remain--; 
+      	printf("P[%d]\t|\t%d\t|\t%d\n",i+1,time-at[i],time-at[i]-bt[i]); 
+      	waitTime+=time-at[i]-bt[i]; 
+      	turnaroundTime+=time-at[i]; 
+      	flag=0; 
+    	} 
+    	if(i==n-1) 
+      	i=0; 
+    	else if(at[i+1]<=time) 
+      	i++; 
+    	else 
+      	i=0; 
+  	} 
+  	printf("\nAverage Waiting Time= %f\n",waitTime*1.0/n); 
+  	printf("Avg Turnaround Time = %f",turnaroundTime*1.0/n); 
+  	return 0;
+}

@@ -37,4 +37,31 @@ int handleQueries(){
   		scanf("%d",&n);
 	  }
   	remain=n; 
-  	
+  	for(i=0;i<n;i++) 
+  	{ 
+  		printf("\nRequest Number %d :",i+1);
+    	printf("\nEnter Arrival Time and Burst Time of Request"); 
+    	scanf("%d",&at[i]);
+    	scanf("%d",&bt[i]); 
+    	rt[i]=bt[i]; 
+  	} 
+  	printf("\nHow much time each request take ? :\t");
+  	scanf("%d",&timeQuant); 
+  	while(timeQuant<=0){
+  		printf("Time Quant can not be less than 1 \nTry again\n Please Enter Again");
+  		scanf("%d",&timeQuant);
+	  }
+  	printf("\n\nRequest\t|Turnaround Time|Waiting Time\n\n"); 
+  	for(time=0,i=0;remain!=0;) 
+  	{ 
+    	if(rt[i]<=timeQuant && rt[i]>0) 
+    	{ 
+      	time+=rt[i]; 
+      	rt[i]=0; 
+      	flag=1; 
+    	} 
+    	else if(rt[i]>0) 
+    	{ 
+      	rt[i]-=timeQuant; 
+      	time+=timeQuant; 
+    	} 
